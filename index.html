@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart College Event Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Smart College Event Management System</h1>
+            <p>Streamline your campus events with intelligent management</p>
+        </div>
+
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showSection('dashboard')">Dashboard</button>
+            <button class="nav-tab" onclick="showSection('create-event')">Create Event</button>
+            <button class="nav-tab" onclick="showSection('browse-events')">Browse Events</button>
+            <button class="nav-tab" onclick="showSection('attendance')">Attendance</button>
+            <button class="nav-tab" onclick="showSection('leaderboard')">Leaderboard</button>
+            <button class="nav-tab" onclick="showSection('notifications')">Notifications</button>
+        </div>
+
+        <!-- Dashboard Section -->
+        <div id="dashboard" class="content-section active">
+            <div class="card">
+                <h2>User Roles & Permissions</h2>
+                <div class="user-roles">
+                    <div class="role-card">
+                        <h3>Admin (Faculty/Coordinator)</h3>
+                        <ul>
+                            <li>Approve clubs and organizations</li>
+                            <li>Monitor all events</li>
+                            <li>Manage system settings</li>
+                            <li>Generate reports</li>
+                        </ul>
+                    </div>
+                    <div class="role-card">
+                        <h3>Club Members (Event Organizers)</h3>
+                        <ul>
+                            <li>Create and manage events</li>
+                            <li>Track registrations</li>
+                            <li>Mark attendance</li>
+                            <li>Send notifications</li>
+                        </ul>
+                    </div>
+                    <div class="role-card">
+                        <h3>Students (Participants)</h3>
+                        <ul>
+                            <li>Browse and discover events</li>
+                            <li>RSVP and register</li>
+                            <li>Earn leaderboard points</li>
+                            <li>Receive notifications</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">245</div>
+                    <div class="stat-label">Total Events</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1,834</div>
+                    <div class="stat-label">Active Students</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">42</div>
+                    <div class="stat-label">Active Clubs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">87%</div>
+                    <div class="stat-label">Attendance Rate</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Create Event Section -->
+        <div id="create-event" class="content-section">
+            <div class="card">
+                <h2>Create New Event</h2>
+                <form id="eventForm">
+                    <div class="form-group">
+                        <label for="eventTitle">Event Title</label>
+                        <input type="text" id="eventTitle" placeholder="Enter event title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventDescription">Description</label>
+                        <textarea id="eventDescription" rows="4" placeholder="Describe your event..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventDate">Date & Time</label>
+                        <input type="datetime-local" id="eventDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventVenue">Venue</label>
+                        <input type="text" id="eventVenue" placeholder="Event location" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventCapacity">Capacity</label>
+                        <input type="number" id="eventCapacity" placeholder="Maximum attendees" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventCategory">Category</label>
+                        <select id="eventCategory" required>
+                            <option value="">Select category</option>
+                            <option value="academic">Academic</option>
+                            <option value="cultural">Cultural</option>
+                            <option value="sports">Sports</option>
+                            <option value="technical">Technical</option>
+                            <option value="social">Social</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="registrationDeadline">Registration Deadline</label>
+                        <input type="datetime-local" id="registrationDeadline" required>
+                    </div>
+                    <button type="submit" class="btn">Create Event</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Browse Events Section -->
+        <div id="browse-events" class="content-section">
+            <div class="card">
+                <h2>Browse Events</h2>
+                <div class="filters">
+                    <select id="filterClub">
+                        <option value="">All Clubs</option>
+                        <option value="tech-club">Tech Club</option>
+                        <option value="cultural-society">Cultural Society</option>
+                        <option value="sports-club">Sports Club</option>
+                    </select>
+                    <select id="filterDate">
+                        <option value="">All Dates</option>
+                        <option value="today">Today</option>
+                        <option value="this-week">This Week</option>
+                        <option value="this-month">This Month</option>
+                    </select>
+                    <select id="filterType">
+                        <option value="">All Types</option>
+                        <option value="academic">Academic</option>
+                        <option value="cultural">Cultural</option>
+                        <option value="sports">Sports</option>
+                        <option value="technical">Technical</option>
+                    </select>
+                </div>
+
+                <div class="event-grid">
+                    <div class="event-card">
+                        <div class="event-header">
+                            <div class="event-title">AI Workshop 2025</div>
+                            <span class="badge badge-info">Technical</span>
+                        </div>
+                        <div class="event-body">
+                            <div class="event-meta">
+                                <span>📅 Sept 15, 2025</span>
+                                <span>📍 Tech Lab A</span>
+                                <span>👥 85/100</span>
+                            </div>
+                            <p>Learn about the latest AI technologies and hands-on machine learning.</p>
+                            <button class="btn btn-success" onclick="registerForEvent('ai-workshop')">Register</button>
+                        </div>
+                    </div>
+
+                    <div class="event-card">
+                        <div class="event-header">
+                            <div class="event-title">Annual Cultural Fest</div>
+                            <span class="badge badge-warning">Cultural</span>
+                        </div>
+                        <div class="event-body">
+                            <div class="event-meta">
+                                <span>📅 Sept 20, 2025</span>
+                                <span>📍 Main Auditorium</span>
+                                <span>👥 245/500</span>
+                            </div>
+                            <p>Three days of music, dance, drama, and cultural celebrations.</p>
+                            <button class="btn btn-success" onclick="registerForEvent('cultural-fest')">Register</button>
+                        </div>
+                    </div>
+
+                    <div class="event-card">
+                        <div class="event-header">
+                            <div class="event-title">Basketball Tournament</div>
+                            <span class="badge badge-success">Sports</span>
+                        </div>
+                        <div class="event-body">
+                            <div class="event-meta">
+                                <span>📅 Sept 18, 2025</span>
+                                <span>📍 Sports Complex</span>
+                                <span>👥 32/64</span>
+                            </div>
+                            <p>Inter-college basketball championship with exciting prizes.</p>
+                            <button class="btn btn-success" onclick="registerForEvent('basketball')">Register</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Attendance Section -->
+        <div id="attendance" class="content-section">
+            <div class="card">
+                <h2>Event Attendance</h2>
+                <div class="qr-scanner">
+                    <div class="qr-placeholder">📱</div>
+                    <h3>QR Code Scanner</h3>
+                    <p>Scan student QR codes to mark attendance</p>
+                    <button class="btn" onclick="startScanner()">Start Scanner</button>
+                </div>
+                
+                <div style="margin-top: 30px;">
+                    <h3>Manual Attendance</h3>
+                    <div class="form-group">
+                        <label for="studentId">Student ID</label>
+                        <input type="text" id="studentId" placeholder="Enter student ID">
+                    </div>
+                    <div class="form-group">
+                        <label for="eventSelect">Select Event</label>
+                        <select id="eventSelect">
+                            <option value="">Choose event</option>
+                            <option value="ai-workshop">AI Workshop 2025</option>
+                            <option value="cultural-fest">Annual Cultural Fest</option>
+                            <option value="basketball">Basketball Tournament</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-success" onclick="markAttendance()">Mark Attendance</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leaderboard Section -->
+        <div id="leaderboard" class="content-section">
+            <div class="card">
+                <h2>Student Leaderboard</h2>
+                <p>Top students based on event participation and engagement</p>
+                <table class="leaderboard-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Student</th>
+                            <th>Events Attended</th>
+                            <th>Points</th>
+                            <th>Badges</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="rank">1</span></td>
+                            <td>Priya Sharma</td>
+                            <td>42</td>
+                            <td>420</td>
+                            <td>🏆 🎯 ⭐</td>
+                        </tr>
+                        <tr>
+                            <td><span class="rank">2</span></td>
+                            <td>Arjun Patel</td>
+                            <td>38</td>
+                            <td>380</td>
+                            <td>🏆 🎯</td>
+                        </tr>
+                        <tr>
+                            <td><span class="rank">3</span></td>
+                            <td>Sneha Kumar</td>
+                            <td>35</td>
+                            <td>350</td>
+                            <td>🏆 ⭐</td>
+                        </tr>
+                        <tr>
+                            <td><span class="rank">4</span></td>
+                            <td>Rahul Singh</td>
+                            <td>32</td>
+                            <td>320</td>
+                            <td>🎯</td>
+                        </tr>
+                        <tr>
+                            <td><span class="rank">5</span></td>
+                            <td>Ananya Das</td>
+                            <td>29</td>
+                            <td>290</td>
+                            <td>⭐</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Notifications Section -->
+        <div id="notifications" class="content-section">
+            <div class="card">
+                <h2>Notifications & Reminders</h2>
+                <div class="notification-card">
+                    <div class="notification-title">🔔 Event Reminder</div>
+                    <p>AI Workshop 2025 starts in 2 hours. Don't forget to bring your laptop!</p>
+                    <small>2 hours ago</small>
+                </div>
+                <div class="notification-card">
+                    <div class="notification-title">✅ Registration Confirmed</div>
+                    <p>Your registration for Basketball Tournament has been confirmed. See you on the court!</p>
+                    <small>1 day ago</small>
+                </div>
+                <div class="notification-card">
+                    <div class="notification-title">🏆 Badge Earned</div>
+                    <p>Congratulations! You've earned the "Event Enthusiast" badge for attending 5 events.</p>
+                    <small>3 days ago</small>
+                </div>
+                <div class="notification-card">
+                    <div class="notification-title">📧 Event Update</div>
+                    <p>Cultural Fest venue has been changed to Main Auditorium due to weather conditions.</p>
+                    <small>1 week ago</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
